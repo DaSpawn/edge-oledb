@@ -1,3 +1,9 @@
+/*!
+ * node-edge-oledb
+ * Copyright(c) 2015 Brian Taber
+ * MIT Licensed
+ */
+
 //#r "System.dll"
 //#r "System.Data.dll"
 //#r "System.Web.Extensions.dll"
