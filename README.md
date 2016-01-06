@@ -31,11 +31,11 @@ oledb(query, function(error, result){
 ```
 
 ## People
-Written by [Brian Taber](https://github.com/DaSpawn) [![DaSpawn's Gratipay][gratipay-image-visionmedia]][gratipay-url-visionmedia]
+Written by [Brian Taber](https://github.com/DaSpawn) [![DaSpawn's Gratipay][gratipay-image-daspawn]][gratipay-url-daspawn]
 
 ## License
 
   [MIT](LICENSE)
   
-
-[gratipay-image-visionmedia]: https://img.shields.io/gratipay/visionmedia.svg
+[gratipay-url-daspawn]: https://gratipay.com/~DaSpawn
+[gratipay-image-daspawn]: https://img.shields.io/gratipay/team/daspawn.svg
