@@ -1,3 +1,9 @@
+/*!
+ * node-edge-oledb
+ * Copyright(c) 2015 Brian Taber
+ * MIT Licensed
+ */
+ 
 "use strict";
 
 var edge = require('edge');
