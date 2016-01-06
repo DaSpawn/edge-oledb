@@ -1,3 +1,7 @@
+//#r "System.dll"
+//#r "System.Data.dll"
+//#r "System.Web.Extensions.dll"
+
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -11,77 +15,76 @@ public class Startup
 {
     public async Task<object> Invoke(IDictionary<string, object> parameters)
     {
-        string connectionString = ((string)parameters["source"]);
-        string command = ((string)parameters["query"]);
-        
-        if (command.StartsWith("select ", StringComparison.InvariantCultureIgnoreCase))
+        string connectionString = ((string)parameters["dsn"]);
+        string commandString = ((string)parameters["query"]);
+        string command = commandString.Substring(0, 6).Trim().ToLower();
+        switch (command)
         {
-            return await this.ExecuteQuery(connectionString, command);
+            case "select":
+                return await this.ExecuteQuery(connectionString, commandString);
+                break;
+            case "insert":
+            case "update":
+            case "delete":
+                return await this.ExecuteNonQuery(connectionString, commandString);
+                break;
+            default:
+                throw new InvalidOperationException("Unsupported type of SQL command. Only select, insert, update, delete are supported.");
         }
-        else if (command.StartsWith("insert ", StringComparison.InvariantCultureIgnoreCase)
-            || command.StartsWith("update ", StringComparison.InvariantCultureIgnoreCase)
-            || command.StartsWith("delete ", StringComparison.InvariantCultureIgnoreCase))
-        {
-            return await this.ExecuteNonQuery(connectionString, command);
-        }
-        else
-        {
-            throw new InvalidOperationException("Unsupported type of SQL command. Only select, insert, update, delete are supported.");
-        }   
     }
 
-    async Task<object> ExecuteQuery(string strConn, string strSelect)
+    async Task<object> ExecuteQuery(string connectionString, string commandString)
     {
-        OleDbConnection myConn = null;
+        OleDbConnection connection = null;
         try {
-            object[] meta = new object[50];
-            bool read;
-
-            myConn = new OleDbConnection(strConn);
-            
-            OleDbCommand command = new OleDbCommand(strSelect,myConn);
-
-            await myConn.OpenAsync();
-
-            List<object> rows = new List<object>();
-
-            using (OleDbDataReader reader = command.ExecuteReader())
+            using (connection = new OleDbConnection(connectionString))
             {
-                IDataRecord record = (IDataRecord)reader;
-                while (await reader.ReadAsync())
+                await connection.OpenAsync();
+                
+                using (var command = new OleDbCommand(commandString, connection))
                 {
-                    var dataObject = new ExpandoObject() as IDictionary<string, Object>;
-                    var resultRecord = new object[record.FieldCount];
-                    record.GetValues(resultRecord);
 
-                    for (int i = 0; i < record.FieldCount; i++)
-                    {      
-                        Type type = record.GetFieldType(i);
-                        if (resultRecord[i] is System.DBNull)
+                    List<object> rows = new List<object>();
+
+                    using (OleDbDataReader reader = command.ExecuteReader())
+                    {
+                        IDataRecord record = (IDataRecord)reader;
+                        while (await reader.ReadAsync())
                         {
-                            resultRecord[i] = null;
-                        }
-                        else if (type == typeof(byte[]) || type == typeof(char[]))
-                        {
-                            resultRecord[i] = Convert.ToBase64String((byte[])resultRecord[i]);
-                        }
-                        else if (type == typeof(Guid) || type == typeof(DateTime))
-                        {
-                            resultRecord[i] = resultRecord[i].ToString();
-                        }
-                        else if (type == typeof(IDataReader))
-                        {
-                            resultRecord[i] = "<IDataReader>";
+                            var dataObject = new ExpandoObject() as IDictionary<string, Object>;
+                            var resultRecord = new object[record.FieldCount];
+                            record.GetValues(resultRecord);
+
+                            for (int i = 0; i < record.FieldCount; i++)
+                            {      
+                                Type type = record.GetFieldType(i);
+                                if (resultRecord[i] is System.DBNull)
+                                {
+                                    resultRecord[i] = null;
+                                }
+                                else if (type == typeof(byte[]) || type == typeof(char[]))
+                                {
+                                    resultRecord[i] = Convert.ToBase64String((byte[])resultRecord[i]);
+                                }
+                                else if (type == typeof(Guid) || type == typeof(DateTime))
+                                {
+                                    resultRecord[i] = resultRecord[i].ToString();
+                                }
+                                else if (type == typeof(IDataReader))
+                                {
+                                    resultRecord[i] = "<IDataReader>";
+                                }
+
+                                dataObject.Add(record.GetName(i), resultRecord[i]);
+                            }
+
+                            rows.Add(dataObject);
                         }
 
-                        dataObject.Add(record.GetName(i), resultRecord[i]);
-                    }
-
-                    rows.Add(dataObject);
+                        return rows;
+                    } 
                 }
-
-                return rows;
-            } 
+            }
         }
         catch(Exception e)
         {
@@ -89,20 +92,33 @@ public class Startup
         }
         finally
         {
-            myConn.Close();
+            connection.Close();
         }
     }
 
     async Task<object> ExecuteNonQuery(string connectionString, string commandString)
     {
-        using (var connection = new OleDbConnection(connectionString))
+        OleDbConnection connection = null;
+        try
         {
-            await connection.OpenAsync();
-            
-            using (var command = new OleDbCommand(commandString, connection))
+            using (connection = new OleDbConnection(connectionString))
             {
-                return await command.ExecuteNonQueryAsync();
+                await connection.OpenAsync();
+                
+                using (var command = new OleDbCommand(commandString, connection))
+                {
+                    return await command.ExecuteNonQueryAsync();
+                }
             }
         }
+        catch(Exception e)
+        {
+            throw new Exception("ExecuteNonQuery Error", e);
+        }
+        finally
+        {
+            connection.Close();
+        }
+
     }
 }
