@@ -1,9 +1,5 @@
-node-edge-oledb
+## node-edge-oledb
 ====
-
-Please note this repo is currently being filled (code is in production use, working to make node module now)
-
-
 
 This module allows OLE DB communications via C# System.Data.OleDb and [Edge.js](https://github.com/tjanczuk/edge).  
 
@@ -14,11 +10,10 @@ Since this module does not use any other external processes to run ole/ado comma
 Usage example:
 
 ```javascript
-
 var oledb = require('node-edge-oledb');
 
 var query = {
-	dsn: "Provider=vfpoledb.1; Data Source=C:/mydb/mydb.dbf; Mode=ReadWrite|Share Deny None;",
+	dsn: "Provider=vfpoledb.1; Data Source=C:/mydb/mydb.dbc; Mode=ReadWrite|Share Deny None;",
 	query: "SELECT * FROM customers WHERE type = 'C'"
 }
 
@@ -27,11 +22,23 @@ oledb(query, function(error, result){
 	console.log(result);
 });	
 
-
 ```
+
+## Installation
+
+```bash
+$ npm install node-edge-oledb
+```
+
+## More Info
+---
+  * https://github.com/tjanczuk/edge
+  * https://www.connectionstrings.com/
+
 
 ## People
 Written by [Brian Taber](https://github.com/DaSpawn) [![DaSpawn's Gratipay][gratipay-image-daspawn]][gratipay-url-daspawn]
+
 
 ## License
 
