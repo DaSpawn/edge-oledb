@@ -7,7 +7,7 @@
 "use strict";
 
 var edge = require('edge');
-var adodb = edge.func('./lib/adodb.cs');
+var adodb = edge.func(__dirname + '/lib/adodb.cs');
 
 function nodeEdgeOledb(query, callback){
 	if (!(this instanceof nodeEdgeOledb)) return new nodeEdgeOledb();
