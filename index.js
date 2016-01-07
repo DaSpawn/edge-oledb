@@ -31,7 +31,7 @@ function nodeEdgeOledb(query, callback){
 			data.records = result
 		}
 		setImmediate(cb, data);
-	}
+	});
 }
 
 module.exports = nodeEdgeOledb;
