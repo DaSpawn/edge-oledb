@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/DaSpawn/node-edge-oledb/issues"
   },
-  "homepage": "https://github.com/DaSpawn/node-edge-oledb#readme"
+  "homepage": "https://github.com/DaSpawn/node-edge-oledb#readme",
+  "dependencies": {
+    "edge": "^5.0.0"
+  }
 }
