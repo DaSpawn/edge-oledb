@@ -5,6 +5,8 @@ A module that enables OLE DB communications on Windows via C# System.Data.OleDb 
 
 Since this module does not use any other external processes to run ole commands and instead uses C# and System.Data.OleDb, so it is extremely fast
 
+Example
+-------
 ```javascript
 var oledb = require('node-edge-oledb');
 
