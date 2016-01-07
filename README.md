@@ -3,7 +3,7 @@ node-edge-oledb
 
 A module that enables OLE DB communications on Windows via C# System.Data.OleDb and [Edge.js](https://github.com/tjanczuk/edge).  
 
-Since this module does not use any other external processes to run ole commands and instead uses C# and System.Data.OleDb, so it is extremely fast
+This module is very fast as it uses C# System.Data.OleDb and does not use any other external processes to run ole commands.
 
 Example
 -------

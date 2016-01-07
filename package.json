@@ -1,6 +1,6 @@
 {
   "name": "node-edge-oledb",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "OLE DB communications via C# System.Data.OleDb and Edge.js",
   "main": "index.js",
   "scripts": {
