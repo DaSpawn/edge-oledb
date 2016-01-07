@@ -34,7 +34,7 @@ function nodeEdgeOledb(options, callback){
 	if (!(this instanceof nodeEdgeOledb)) return new nodeEdgeOledb();
 	console.log("2")
 
-	adodb(query, function(error, result){
+	adodb(options, function(error, result){
 		var data = {}
 		if (error){
 			data.valid = false 
