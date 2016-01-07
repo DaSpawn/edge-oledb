@@ -1,5 +1,6 @@
 node-edge-oledb
-====
+===============
+
 This module enables OLE DB communications on Windows via C# System.Data.OleDb and [Edge.js](https://github.com/tjanczuk/edge).  
 
 There was a need for an interface to an old system written in FoxPro, and the only available nodejs adodb/oledb modules at the time were slow/problematic/used external programs
