@@ -6,6 +6,7 @@
  
 "use strict";
 
+var util = require('util');
 var edge = require('edge');
 var adodb = edge.func(__dirname + '/lib/oledb.cs');
 
