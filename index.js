@@ -30,9 +30,7 @@ module.exports = nodeEdgeOledb
  */
 
 function nodeEdgeOledb(options, callback){
-	console.log("1")
 	if (!(this instanceof nodeEdgeOledb)) return new nodeEdgeOledb(options, callback);
-	console.log("2")
 
 	adodb(options, function(error, result){
 		var data = {}
