@@ -1,0 +1,26 @@
+{
+  "name": "node-edge-oledb",
+  "version": "1.0.0",
+  "description": "OLE DB communications via C# System.Data.OleDb and Edge.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSpawn/node-edge-oledb.git"
+  },
+  "keywords": [
+    "ole",
+    "ado",
+    "oledb",
+    "adodb",
+    "edge"
+  ],
+  "author": "Brian Taber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DaSpawn/node-edge-oledb/issues"
+  },
+  "homepage": "https://github.com/DaSpawn/node-edge-oledb#readme"
+}
