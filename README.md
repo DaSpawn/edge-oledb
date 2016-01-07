@@ -1,5 +1,5 @@
-## node-edge-oledb
-
+node-edge-oledb
+====
 This module enables OLE DB communications on Windows via C# System.Data.OleDb and [Edge.js](https://github.com/tjanczuk/edge).  
 
 There was a need for an interface to an old system written in FoxPro, and the only available nodejs adodb/oledb modules at the time were slow/problematic/used external programs
@@ -21,26 +21,30 @@ oledb(options, function(error, result){
 
 ```
 
-## Installation
 
+Installation
+====
 ```bash
 $ npm install node-edge-oledb
 ```
 
-## More Info
 
+More Info
+====
   * https://en.wikipedia.org/wiki/OLE_DB
   * https://github.com/tjanczuk/edge
   * https://www.connectionstrings.com/
 
 
-## People
+People
+====
 Written by [Brian Taber](https://github.com/DaSpawn) [![DaSpawn's Gratipay][gratipay-image-daspawn]][gratipay-url-daspawn]
 
 
-## License
-
+License
+====
   [MIT](LICENSE)
-  
+
+
 [gratipay-url-daspawn]: https://gratipay.com/~DaSpawn
 [gratipay-image-daspawn]: https://img.shields.io/gratipay/team/daspawn.svg
