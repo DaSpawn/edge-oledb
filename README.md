@@ -29,6 +29,7 @@ $ npm install node-edge-oledb
 
 ## More Info
 
+  * https://en.wikipedia.org/wiki/OLE_DB
   * https://github.com/tjanczuk/edge
   * https://www.connectionstrings.com/
 
