@@ -1,5 +1,5 @@
 /*!
- * node-edge-oledb
+ * edge-oledb
  * Copyright(c) 2015 Brian Taber
  * MIT Licensed
  */

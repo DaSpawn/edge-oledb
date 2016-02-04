@@ -1,4 +1,4 @@
-node-edge-oledb
+edge-oledb
 ======
 
 A module that enables OLE DB communications on Windows via C# System.Data.OleDb and [Edge.js](https://github.com/tjanczuk/edge).  
@@ -8,7 +8,7 @@ This module is very fast as it uses C# System.Data.OleDb and does not use any ot
 Example
 -------
 ```javascript
-var oledb = require('node-edge-oledb');
+var oledb = require('edge-oledb');
 
 var options = {
 	dsn: "Provider=vfpoledb.1; Data Source=C:/mydb/mydb.dbc; Mode=ReadWrite|Share Deny None;",
@@ -31,7 +31,7 @@ There was a need for an interface to an old system written in FoxPro, and the on
 Installation
 ------------
 ```bash
-$ npm install node-edge-oledb
+$ npm install edge-oledb
 ```
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "node-edge-oledb",
+  "name": "edge-oledb",
   "version": "1.0.7",
   "description": "OLE DB communications via C# System.Data.OleDb and Edge.js",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DaSpawn/node-edge-oledb.git"
+    "url": "git+https://github.com/DaSpawn/edge-oledb.git"
   },
   "keywords": [
     "ole",
@@ -20,9 +20,9 @@
   "author": "Brian Taber",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DaSpawn/node-edge-oledb/issues"
+    "url": "https://github.com/DaSpawn/edge-oledb/issues"
   },
-  "homepage": "https://github.com/DaSpawn/node-edge-oledb#readme",
+  "homepage": "https://github.com/DaSpawn/edge-oledb#readme",
   "dependencies": {
     "edge": "^5.0.0"
   }
